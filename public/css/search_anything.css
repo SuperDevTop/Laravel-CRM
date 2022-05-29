@@ -1,0 +1,113 @@
+#search_anything {
+	position: absolute;
+
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	background-color: #2f4050;
+
+	display: none;
+	z-index: 999;
+
+	color: #F0F0F0;
+}
+
+#search_anything_input_area {
+	width: 400px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+
+	text-align: center;
+}
+
+#search_anything_input_area input {
+	height: 45px;
+	line-height: 1em;
+	font-size: 16px;
+	width: 400px;
+	padding-left: 10px;
+}
+
+#search_anything h1, #search_anything h2,#search_anything h3,#search_anything h4 {
+	color: #F0F0F0;
+	text-align: center;
+	font-size: 25px;
+}
+
+#search_anything_results {
+	margin-top: 50px;
+}
+
+#search_anything_loading {
+	display: none;
+
+	width: 64px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+}
+
+.search_anything_container {
+	width: 280px;
+	float: left;
+
+	margin-left: 20px;
+
+	overflow-y: auto;
+	max-height: 700px;
+}
+
+.search_anything_container hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#search_anything_help {
+	width: 600px;
+
+	margin-top: 100px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	padding: 10px;
+
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+#search_anything_help ul {
+	margin-left: 25px;
+}
+
+#search_anything_help h1 {
+	font-size: 22px;
+	text-align: center;
+}
+
+#search_anything_help h2 {
+	font-size: 17px;
+	text-align: center;
+}
+
+.search_anything_result {
+	cursor: pointer;
+
+	width: 250px;
+	height: 20px;
+
+	text-overflow: ellipsis;
+    white-space: nowrap;
+
+    display: block;
+    overflow: hidden;
+}
+
+.search_anything_result:hover, .search_anything_result.selected {
+	font-weight: bold;
+	color: #00B0C4;
+}

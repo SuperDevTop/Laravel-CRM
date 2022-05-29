@@ -1,0 +1,116 @@
+@section('page_name')
+	System configuration
+@stop
+
+@section('content')
+	<div class="frame">
+		{{ Form::model($system, array('files' => true)) }}
+			<div class="bit-3">
+				<div class="container">
+					<div class="container_title blue">
+						System configuration
+					</div>
+					<div class="container_content">
+						<table class='form tlf'>
+							<tr>
+								<td style='width: 120px;'><label>System title</label></td>
+								<td style='width: 100%'>{{ Form::text('site_title') }}</td>
+							</tr>
+							<tr>
+								<td class="pt"><label>Company logo</label></td>
+								<td class="pt">
+									<img src="logo.png" alt="Company logo">
+									<br>
+									Upload new logo:
+									{{ Form::file('logo') }}
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="bit-3">
+				<div class="container">
+					<div class="container_title green">
+						Quote & invoice settings
+					</div>
+					<div class="container_content">
+						<table class='form tlf'>
+							<tr>
+								<td style='width: 180px;'><label>Default VAT</label></td>
+								<td style='width: 100%'>
+									<select name='defaultJobStatus'>
+										@foreach(JobStatus::all() as $jobStatus)
+											<option value='{{ $jobStatus->id }}' <?php if (System::find(1)->defaultJobStatus == $jobStatus->id) echo 'selected'; ?>>{{ $jobStatus->type }}</option>
+										@endforeach
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td style='width: 180px;'><label>Default Job Status</label></td>
+								<td style='width: 100%'>
+									<select name='defaultVat'>
+										@foreach($vats as $vat)
+											<option value='{{ $vat->id }}' <?php if (System::find(1)->defaultVat == $vat->id) echo 'selected'; ?>>{{ $vat->type }}</option>
+										@endforeach
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td style='width: 180px;'><label>Products have visit date</label></td>
+								<td style='width: 100%'>
+									{{ Form::hidden('quoteHasVisitDate', '0') }}
+									{{ Form::checkbox('quoteHasVisitDate', '1') }}
+								</td>
+							</tr>
+							<tr>
+								<td style='width: 180px;'><label>Invoices have IRPF</label></td>
+								<td style='width: 100%'>
+									{{ Form::hidden('invoiceHasIrpf', '0') }}
+									{{ Form::checkbox('invoiceHasIrpf', '1') }}
+								</td>
+							</tr>
+							<tr>
+								<td>Email template</td>
+								<td>
+									{{ Form::textarea('emailTemplate', null, array('style' => 'height: 400px;')) }}
+								</td>
+							</tr>
+							<tr>
+								<td class="pt"></td>
+								<td class="pt">{{ Form::submit('Save', array('class' => 'styled blue fr')) }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="bit-3">
+				<div class="container">
+					<div class="container_title orange">
+						Mail settings
+					</div>
+					<div class="container_content">
+						<table class="form tlf">
+							<tr>
+								<td style='width: 120px;'><label>SMTP host</label></td>
+								<td style='width: 100%;'>{{ Form::text('smtpHost') }}</td>
+							</tr>
+							<tr>
+								<td><label>SMTP port</label></td>
+								<td>{{ Form::text('smtpPort') }}</td>
+							</tr>
+							<tr>
+								<td><label>SMTP username</label></td>
+								<td>{{ Form::text('smtpUsername') }}</td>
+							</tr>
+							<tr>
+								<td><label>SMTP password</label></td>
+								<td>{{ Form::password('smtpPassword') }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		{{ Form::close() }}
+	</div>
+@stop
